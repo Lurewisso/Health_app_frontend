@@ -2,47 +2,52 @@ import React from 'react';
 import { FaDownload, FaShareAlt, FaCheck, FaChartLine, FaBell } from 'react-icons/fa';
 
 const Records = () => {
+  const features = [
+    {
+      icon: <FaCheck />,
+      title: "Автоматический анализ",
+      description: "ИИ проверяет ваши показатели на соответствие нормам",
+      color: "green"
+    },
+    {
+      icon: <FaChartLine />,
+      title: "Динамика показателей",
+      description: "Наглядные графики изменений с течением времени",
+      color: "blue"
+    },
+    {
+      icon: <FaBell />,
+      title: "Уведомления",
+      description: "Оповещения при критических изменениях показателей",
+      color: "purple"
+    }
+  ];
+
   return (
     <section id="records" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
-            <h2 className="text-3xl font-bold mb-6">Ваши анализы всегда под рукой</h2>
-            <p className="text-gray-600 mb-8">Загружайте результаты анализов в формате PDF или изображений. Наш ИИ анализирует данные, выявляет тенденции и предупреждает о возможных проблемах.</p>
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="lg:w-1/2">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">Ваши анализы всегда под рукой</h2>
+            <p className="text-gray-600 mb-8 text-lg">
+              Загружайте результаты анализов в формате PDF или изображений. Наш ИИ анализирует данные, выявляет тенденции и предупреждает о возможных проблемах.
+            </p>
             
-            <div className="space-y-4">
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 mr-3 mt-1">
-                  <FaCheck />
+            <div className="space-y-6">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start">
+                  <div className={`w-10 h-10 rounded-full bg-${feature.color}-100 flex items-center justify-center text-${feature.color}-600 mr-4`}>
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-800">{feature.title}</h4>
+                    <p className="text-sm text-gray-500">{feature.description}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium">Автоматический анализ</h4>
-                  <p className="text-sm text-gray-500">ИИ проверяет ваши показатели на соответствие нормам</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3 mt-1">
-                  <FaChartLine />
-                </div>
-                <div>
-                  <h4 className="font-medium">Динамика показателей</h4>
-                  <p className="text-sm text-gray-500">Наглядные графики изменений с течением времени</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start">
-                <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 mr-3 mt-1">
-                  <FaBell />
-                </div>
-                <div>
-                  <h4 className="font-medium">Уведомления</h4>
-                  <p className="text-sm text-gray-500">Оповещения при критических изменениях показателей</p>
-                </div>
-              </div>
+              ))}
             </div>
             
-            <button className="mt-8 px-6 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 smooth-transition">
+            <button className="btn-primary mt-8 px-8 py-3">
               Загрузить анализы
             </button>
           </div>
@@ -51,14 +56,14 @@ const Records = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <div className="bg-gray-100 px-4 py-3 border-b flex justify-between items-center">
                 <div>
-                  <span className="font-medium">Общий анализ крови</span>
+                  <span className="font-medium text-gray-800">Общий анализ крови</span>
                   <span className="text-sm text-gray-500 ml-2">12.06.2023</span>
                 </div>
                 <div className="flex space-x-2">
-                  <button className="text-gray-500 hover:text-gray-700">
+                  <button className="text-gray-500 hover:text-primary transition-colors">
                     <FaDownload />
                   </button>
-                  <button className="text-gray-500 hover:text-gray-700">
+                  <button className="text-gray-500 hover:text-primary transition-colors">
                     <FaShareAlt />
                   </button>
                 </div>
@@ -66,21 +71,24 @@ const Records = () => {
               
               <div className="p-4">
                 <div className="grid grid-cols-3 gap-4 mb-4">
-                  <div className="bg-green-50 p-3 rounded-lg">
-                    <div className="text-green-600 font-medium">Гемоглобин</div>
-                    <div className="text-2xl font-bold">135</div>
-                    <div className="text-xs text-green-600">г/л (норма)</div>
-                  </div>
-                  <div className="bg-yellow-50 p-3 rounded-lg">
-                    <div className="text-yellow-600 font-medium">Лейкоциты</div>
-                    <div className="text-2xl font-bold">10.2</div>
-                    <div className="text-xs text-yellow-600">↑ выше нормы</div>
-                  </div>
-                  <div className="bg-green-50 p-3 rounded-lg">
-                    <div className="text-green-600 font-medium">Эритроциты</div>
-                    <div className="text-2xl font-bold">4.5</div>
-                    <div className="text-xs text-green-600">в норме</div>
-                  </div>
+                  {[
+                    { name: "Гемоглобин", value: "135", status: "normal", unit: "г/л" },
+                    { name: "Лейкоциты", value: "10.2", status: "high", unit: "↑ выше нормы" },
+                    { name: "Эритроциты", value: "4.5", status: "normal", unit: "в норме" }
+                  ].map((item, index) => (
+                    <div 
+                      key={index}
+                      className={`p-3 rounded-lg ${
+                        item.status === "normal" 
+                          ? "bg-green-50 text-green-600" 
+                          : "bg-yellow-50 text-yellow-600"
+                      }`}
+                    >
+                      <div className="font-medium">{item.name}</div>
+                      <div className="text-2xl font-bold">{item.value}</div>
+                      <div className="text-xs">{item.unit}</div>
+                    </div>
+                  ))}
                 </div>
                 
                 <div className="h-40 bg-gray-100 rounded-lg flex items-center justify-center mb-4">
@@ -96,7 +104,9 @@ const Records = () => {
                       <FaCheck />
                     </div>
                     <div>
-                      <p className="text-sm">Повышенный уровень лейкоцитов может указывать на воспалительный процесс. Рекомендуем проконсультироваться с врачом.</p>
+                      <p className="text-sm text-gray-700">
+                        Повышенный уровень лейкоцитов может указывать на воспалительный процесс. Рекомендуем проконсультироваться с врачом.
+                      </p>
                     </div>
                   </div>
                 </div>

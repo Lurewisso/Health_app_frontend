@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaBookmark, FaChevronRight } from 'react-icons/fa';
+import { FaBookmark, FaArrowRight } from 'react-icons/fa';
 
 const News = () => {
   const newsItems = [
@@ -33,28 +33,39 @@ const News = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Медицинские новости</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Актуальные статьи о здоровье и медицине</p>
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">Медицинские новости</h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Актуальные статьи о здоровье и медицине
+          </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsItems.map(news => (
-            <div key={news.id} className="bg-white rounded-xl shadow-md overflow-hidden card-hover">
+            <div 
+              key={news.id} 
+              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow border border-gray-100"
+            >
               <div className="h-48 overflow-hidden">
-                <img src={news.image} alt={news.title} className="w-full h-full object-cover" />
+                <img 
+                  src={news.image} 
+                  alt={news.title} 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
               </div>
               <div className="p-6">
                 <div className="flex justify-between items-center mb-2">
                   <span className="text-sm text-gray-500">{news.date}</span>
-                  <button className={`${news.saved ? 'text-cyan-600' : 'text-gray-400'} hover:text-cyan-600`}>
+                  <button 
+                    className={`${news.saved ? 'text-primary' : 'text-gray-400'} hover:text-primary transition-colors`}
+                  >
                     <FaBookmark />
                   </button>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{news.title}</h3>
+                <h3 className="text-xl font-semibold mb-3 text-gray-800">{news.title}</h3>
                 <p className="text-gray-600 mb-4">{news.description}</p>
-                <button className="text-cyan-600 font-medium flex items-center">
+                <button className="text-primary font-medium flex items-center group">
                   Читать далее
-                  <FaChevronRight className="ml-1 text-sm" />
+                  <FaArrowRight className="ml-2 text-sm group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
@@ -62,7 +73,7 @@ const News = () => {
         </div>
         
         <div className="mt-10 text-center">
-          <button className="px-6 py-3 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 smooth-transition">
+          <button className="btn-primary px-8 py-3">
             Показать больше статей
           </button>
         </div>
